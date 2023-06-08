@@ -1,0 +1,22 @@
+--Create grocery store database
+CREATE TABLE clothes (id INTEGER PRIMARY KEY, name TEXT, size TEXT, color TEXT, price INTEGER);
+
+INSERT INTO clothes VALUES (1, "shirt", "S", "white", "6");
+INSERT INTO clothes VALUES (2, "hoodie", "M", "red", "5");
+INSERT INTO clothes VALUES (3, "shirt", "L", "blue", "8");
+INSERT INTO clothes VALUES (4, "underwear", "S", "white", "10");
+INSERT INTO clothes VALUES (5, "underwear", "M", "black", "10");
+INSERT INTO clothes VALUES (6, "pants", "L", "black", "30");
+INSERT INTO clothes VALUES (7, "pants", "S", "white", "35");
+INSERT INTO clothes VALUES (8, "shirt", "L", "pink", "16");
+INSERT INTO clothes VALUES (9, "pants", "M", "grey", "36");
+INSERT INTO clothes VALUES (10, "shirt", "M", "grey", "28");
+INSERT INTO clothes VALUES (11, "hoodie", "M", "black", "9");
+INSERT INTO clothes VALUES (12, "shirt", "L", "grey", "35");
+INSERT INTO clothes VALUES (13, "hoodie", "S", "red", "45");
+INSERT INTO clothes VALUES (14, "pants", "M", "white", "23");
+INSERT INTO clothes VALUES (15, "underwear", "S", "pink", "14");
+
+-- Display the database by name and size ordering the data by price.
+SELECT * FROM clothes;
+SELECT name, price, size FROM clothes ORDER BY price
