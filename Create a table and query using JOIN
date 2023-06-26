@@ -1,0 +1,89 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, 'birth state' TEXT);
+INSERT INTO singers VALUES (1, 'Luke Combs', 'North Carolina');
+INSERT INTO singers VALUES (2,'Morgan Wallen', 'Tennessee');
+INSERT INTO singers VALUES (3,'Luke Bryan', 'Georgia');
+INSERT INTO singers VALUES (4,'Lainey Wilson', 'Lousiana');
+INSERT INTO singers VALUES (5,'Thomas Rhett', 'Georgia');
+INSERT INTO singers VALUES (6,'Dustin Lynch', 'Tennessee');
+INSERT INTO singers VALUES (7,'Carrie Underwood','oklahoma');
+INSERT INTO singers VALUES (8,'Jason Aldean', 'Georgia');
+INSERT INTO singers VALUES (9,'Kane Brown', 'Tennessee');
+INSERT INTO singers VALUES (10,'Zach Bryan', 'Japan');
+INSERT INTO singers VALUES (11,'Eric Church','North Carolina');
+INSERT INTO singers VALUES (12,'Garth Brooks', '');
+INSERT INTO singers VALUES (13,'Shania Twain', '');
+INSERT INTO singers VALUES (14,'Blake Shelton','Oklahoma');
+INSERT INTO singers VALUES (15,'Maren Morris','Texas');
+
+
+
+CREATE TABLE marital_status (person_id INTEGER, status TEXT);
+INSERT INTO marital_status VALUES (1,'married');
+INSERT INTO marital_status VALUES (2,'single');
+INSERT INTO marital_status VALUES (3,'married');
+INSERT INTO marital_status VALUES (4,'single');
+INSERT INTO marital_status VALUES (5,'married');
+INSERT INTO marital_status VALUES (6,'single');
+INSERT INTO marital_status VALUES (7,'married');
+INSERT INTO marital_status VALUES (8,'married');
+INSERT INTO marital_status VALUES (9,'married');
+INSERT INTO marital_status VALUES (10,'engaged');
+INSERT INTO marital_status VALUES (11,'married');
+INSERT INTO marital_status VALUES (12,'married');
+INSERT INTO marital_status VALUES (13,'engaged');
+INSERT INTO marital_status VALUES (14,'married');
+INSERT INTO marital_status VALUES (15,'married');
+
+CREATE TABLE songs (person_id INTEGER, albums INTEGER, singles INTEGER);
+INSERT INTO songs VALUES (1,4,16);
+INSERT INTO songs VALUES (2,3,13);
+INSERT INTO songs VALUES (3,7,33);
+INSERT INTO songs VALUES (4,4,11);
+INSERT INTO songs VALUES (5,6,28);
+INSERT INTO songs VALUES (6,5,17);
+INSERT INTO songs VALUES (7,9,29);
+INSERT INTO songs VALUES (8,10,38);
+INSERT INTO songs VALUES (9,3,20);
+INSERT INTO songs VALUES (10,3,8);
+INSERT INTO songs VALUES (11,7,29);
+INSERT INTO songs VALUES (12,16,67);
+INSERT INTO songs VALUES (13,6,45);
+INSERT INTO songs VALUES (14,12,52);
+INSERT INTO songs VALUES (15,6,20);
+/* Create a list of all singers by name, status, and singles released*/
+SELECT s.name,m.status, ss.singles  
+FROM singers s 
+JOIN marital_status m
+ON s.id=m.person_id
+JOIN songs ss
+ON ss.person_id=s.id;
+
+/* Create a list of all singers that have released more than 15 singles IN descending order*/
+SELECT s.name, ss.singles     
+    FROM singers s
+    JOIN songs ss 
+    ON s.id=ss.person_id
+    WHERE singles>15
+    ORDER BY singles DESC;
+    
+/* Create a list of singers and the amount of singles they have and who are single*/
+
+SELECT s.name, m.status, ss.singles
+FROM singers s
+JOIN marital_status m
+ON s.id=m.person_id
+JOIN songs ss
+ON ss.person_id=s.id
+WHERE status is 'single';
+
+/* Create a list of singers using the "AND" function and JOINing all the tables to find singers who are married and released less than 18 singles.*/
+SELECT s.name, m.status, ss.singles
+FROM singers s
+JOIN marital_status m
+ON s.id=m.person_id
+JOIN songs ss
+ON ss.person_id=s.id
+/* AND */
+WHERE singles<18 AND status= 'married';
