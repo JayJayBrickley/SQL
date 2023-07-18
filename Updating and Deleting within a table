@@ -1,0 +1,26 @@
+/* What does the app's SQL look like? */
+
+CREATE TABLE 'Golf_Scores' (id INTEGER PRIMARY KEY, course TEXT, score INTEGER);
+INSERT INTO Golf_Scores VALUES (1,'Eagle Eye', 60);
+INSERT INTO Golf_Scores VALUES (2,'Royal Scott', 75);
+INSERT INTO Golf_Scores VALUES (3,'Indian Hills', 80);
+INSERT INTO Golf_Scores VALUES (4,'Maple Brook', 85);
+INSERT INTO Golf_Scores VALUES (5,'Sparks Broadway', 94);
+INSERT INTO Golf_Scores VALUES (6,'Bonnie View', 87);
+INSERT INTO Golf_Scores VALUES (7,'Ledg Meadows', 78);
+INSERT INTO Golf_Scores VALUES (8,'Centennial Acres', 96);
+INSERT INTO Golf_Scores VALUES (9,'Iron Wood Links', 82);
+INSERT INTO Golf_Scores VALUES (10,'Willow Wood', 76);
+
+SELECT * FROM Golf_Scores;
+
+/* Updating a score within the app*/
+
+UPDATE Golf_Scores SET score=63 WHERE course='Eagle Eye';
+
+SELECT * FROM Golf_Scores;
+
+/* Deleting a course due to low score*/
+
+DELETE FROM Golf_Scores WHERE course='Eagle Eye';
+SELECT * FROM Golf_Scores
